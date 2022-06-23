@@ -1,13 +1,26 @@
 from dataclasses import dataclass
-
-@dataclass
-class OrderAttributes:
-    id: int
-
-@dataclass
-class OrderData:
-    attributes: OrderAttributes
+from .order_item import OrderItemEntity
 
 @dataclass
 class OrderEntity:
-    data: OrderData
+    customer_phone_number: str
+    sales_type_id: int
+    sales_type_name: str
+    client_created_at: str
+    application_order_id: str
+    payment_type: str
+    note: str
+    complete_order_notification_url: str
+    accept_order_notification_url: str
+    cancel_order_notification_url: str
+    assign_expedition_notification_url: str
+    discount_id: int
+    discount_type: str
+    discount_amount: int
+    discount_guid: str
+    discount_name: str
+    order_items: OrderItemEntity
+
+@dataclass
+class OrderId:
+    id: int

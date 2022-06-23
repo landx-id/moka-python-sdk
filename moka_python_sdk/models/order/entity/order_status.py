@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 @dataclass
-class OrderStatusAttributes:
+class OrderStatusEntity:
     """
     0: INCOMING
     1: ACCEPTED
@@ -12,11 +12,3 @@ class OrderStatusAttributes:
     6: DELIVERED
     """
     status_code: int
-
-@dataclass
-class OrderStatusData:
-    attributes: OrderStatusAttributes
-
-@dataclass
-class OrderStatusEntity:
-    data: OrderStatusData

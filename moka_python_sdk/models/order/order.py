@@ -1,16 +1,24 @@
+from dataclasses import asdict
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
 from models._to_model import _to_model
+from typing import List
+
 
 from .entity.order_status import OrderStatusEntity
-from .entity.order import OrderEntity
+from .entity.order import OrderEntity, OrderId
 from .entity.driver import DriverEntity
 from .entity.sales_type import SalesTypeEntity
 from .entity.auto_accept import AutoAcceptEntity
 
 class Order:
     @staticmethod
-    def get(*, outlet_id: str, application_id: str, **kwargs) -> list[OrderStatusEntity]:
+    def get_status(
+        *,
+        outlet_id: int,
+        application_order_id: str,
+        **kwargs
+    ) -> List[OrderStatusEntity]:
         """Send GET Request to Get status of specific order.
         (API Reference : https://api.mokapos.com/docs#operation/getOrderStatusV1)
 
@@ -21,73 +29,47 @@ class Order:
         Returns:
             data: Array status of order
         """
-        url = f"/v1/outlets/{outlet_id}/advanced_orderings/orders/{application_id}/status"
+        url = f"/v1/outlets/{outlet_id}/advanced_orderings/orders/{application_order_id}/status"
         response = _APIRequestor.get(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=OrderEntity, data=response.body['data'])
+            return _to_model(model=List[OrderStatusEntity], data=response.body['data'])
         else:
             raise MokaError(response)
     
     @staticmethod
-    def create(**kwargs):
+    def create(
+        *,
+        outlet_id: str,
+        order_entity: OrderEntity,
+        **kwargs
+    ) -> List[OrderId]:
+        
         """Send POST Request to Create a new order.
         (API Reference : https://api.mokapos.com/docs#operation/createOrderV1)
 
-        Path Parameters:
-            - outlet_id (str): ID of the outlet that will be searched.
-        
         Args:
-            - customer_name (str): Name of the customer.
-            - customer_phone_number (str): Phone number of the customer.
-            - sales_type_id (int): ID of the sales type.
-            - sales_type_name (str): Name of the sales type.
-            - client_created_at (str): Date and time of the order.
-            - application_order_id (str): ID of the order.
-            - payment_type (str): Payment type of the order.
-            - note (str): Note of the order.
-            - complete_order_notification_url (str): URL of the complete order notification.
-            - accept_order_notification_url (str): URL of the accept order notification.
-            - cancel_order_notification_url (str): URL of the cancel order notification.
-            - assign_expedition_notification_url (str): URL of the assign expedition notification.
-            - discount_id (int): ID of the discount.
-            - discount_type (str): Type of the discount.
-            - discount_amount (str): Amount of the discount.
-            - discount_guid (str): GUID of the discount.
-            - discount_name (str): Name of the discount.
-            - order_items (list): List of order items.
-                - item_id (int): ID of the item.
-                - item_name (str): Name of the item.
-                - quantity (int): Quantity of the item.
-                - item_variant_id (int): ID of the item variant.
-                - item_variant_name (str): Name of the item variant.
-                - note (str): Note of the item.
-                - item_price_library (int): Price of the item.
-                - category_id (int): ID of the category.
-                - category_name (str): Name of the category.
-                - item_discount_id (int): ID of the item discount.
-                - item_discount_type (str): Type of the item discount.
-                - item_discount_amount (str): Amount of the item discount.
-                - item_discount_guid (str): GUID of the item discount.
-                - item_discount_name (str): Name of the item discount.
-                - item_modifiers (list): List of item modifiers.
-                    - item_modifier_id (int): ID of the item modifier.
-                    - item_modifier_name (str): Name of the item modifier.
-                    - item_modifier_option_id (int): ID of the item modifier option.
-                    - item_modifier_option_name (str): Name of the item modifier option.
-                    - item_modifier_option_price (int): Price of the item modifier option.
+            - outlet_id (str): ID of the outlet that will be searched.
+            - order_entity (OrderEntity): Order Entity
         
         Returns:
             data: ID of the order
         """
-        url = f"/v1/outlets/{kwargs['outlet_id']}/advanced_orderings/orders"
-        response = _APIRequestor.post(url, **kwargs)
+        url = f"/v1/outlets/{outlet_id}/advanced_orderings/orders"
+        body = asdict(order_entity)
+        response = _APIRequestor.post(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=OrderEntity, data=response.body['data'])
+            return _to_model(model=List[OrderId], data=response.body['data'])
         else:
             raise MokaError(response)
 
     @staticmethod
-    def cancel(*, outlet_id: str, application_order_id: str, **kwargs) -> OrderEntity:
+    def cancel(
+        *,
+        outlet_id: str,
+        application_order_id: str,
+        cancel_reason: str,
+        **kwargs
+    ) -> List[OrderId]:
         """Send POST Request to Cancel an order.
         (API Reference : https://api.mokapos.com/docs#operation/cancelOrderV1)
 
@@ -100,14 +82,17 @@ class Order:
             data: ID of the order
         """
         url = f"/v1/outlets/{outlet_id}/advanced_orderings/orders/{application_order_id}/cancel"
-        response = _APIRequestor.post(url, **kwargs)
+        body = {
+            "cancel_reason": cancel_reason
+        }
+        response = _APIRequestor.post(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=OrderEntity, data=response.body['data'])
+            return _to_model(model=List[OrderId], data=response.body['data'])
         else:
             raise MokaError(response)
 
     @staticmethod
-    def generate_sales_type(outlet_id: str, **kwargs) -> SalesTypeEntity:
+    def generate_sales_type(outlet_id: str, **kwargs) -> List[SalesTypeEntity]:
         """Send POST Request to Generate a sales type.
         (API Reference : https://api.mokapos.com/docs#operation/generateSalesTypeV2)
 
@@ -120,7 +105,7 @@ class Order:
         url = f"/v2/outlets/{outlet_id}/advanced_orderings/generate_sales_type"
         response = _APIRequestor.post(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=SalesTypeEntity, data=response.body['data'])
+            return _to_model(model=List[SalesTypeEntity], data=response.body['data'])
         else:
             raise MokaError(response)
 
@@ -155,7 +140,10 @@ class Order:
             data: Auto accept
         """
         url = f"/v1/outlets/{outlet_id}/advanced_orderings/auto_accept"
-        response = _APIRequestor.post(url, **kwargs)
+        body = {
+            "auto_accept_status": status
+        }
+        response = _APIRequestor.post(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
             return _to_model(model=AutoAcceptEntity, data=response.body['data'])
         else:
@@ -185,12 +173,12 @@ class Order:
             data: ID of the order
         """
         url = f"/v1/outlets/{outlet_id}/advanced_orderings/orders/{application_order_id}/drivers"
-        data = {
+        body = {
             "name": driver_name,
             "license_plate": driver_license_plate,
             "phone_number": driver_phone_number
         }
-        response = _APIRequestor.post(url, body=data, **kwargs)
+        response = _APIRequestor.post(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
             return _to_model(model=DriverEntity, data=response.body['data'])
         else:

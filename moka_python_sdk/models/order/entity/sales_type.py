@@ -1,12 +1,6 @@
 from dataclasses import dataclass
 
 @dataclass
-class SalesTypeAttributes:
+class SalesTypeEntity:
     id: int
     name: str
-    
-class SalesTypeData:
-    attributes: SalesTypeAttributes
-
-class SalesTypeEntity:
-    data: SalesTypeData
