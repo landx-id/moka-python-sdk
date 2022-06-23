@@ -15,6 +15,7 @@ class Invoice:
         end: float = None,
         time_filter: str = None,
         reorder_type: str = None,
+        **kwargs
     ) -> InvoiceEntity:
         """Send GET Request to Get invoices.
         (API Reference : https://api.mokapos.com/docs#operation/reportInvoicesV3)
@@ -40,7 +41,7 @@ class Invoice:
             "time_filter": time_filter,
             "reorder_type": reorder_type,
         }
-        response = _APIRequestor.get(url, body=body)
+        response = _APIRequestor.get(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
             return _to_model(model=InvoiceEntity, data=response.body['data'])
         else:
@@ -51,6 +52,7 @@ class Invoice:
         *,
         outlet_id: str,
         invoice_id: str,
+        **kwargs
     ) -> InvoiceEntity:
         """Send GET Request to Get invoice detail.
         (API Reference : https://api.mokapos.com/docs#operation/reportInvoiceDetailV3)
@@ -66,7 +68,7 @@ class Invoice:
         body = {
             "invoice_id": invoice_id,
         }
-        response = _APIRequestor.get(url, body=body)
+        response = _APIRequestor.get(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
             return _to_model(model=InvoiceData, data=response.body['data'])
         else:
