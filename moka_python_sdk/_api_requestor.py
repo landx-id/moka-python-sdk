@@ -17,6 +17,10 @@ class _APIRequestor:
     @staticmethod
     def patch(url, **kwargs):
         return _APIRequestor._request("PATCH", url, **kwargs)
+    
+    @staticmethod
+    def delete(url, **kwargs):
+        return _APIRequestor._request("DELETE", url, **kwargs)
 
     @staticmethod
     def _request(
