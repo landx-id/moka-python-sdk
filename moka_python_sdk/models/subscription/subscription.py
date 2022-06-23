@@ -1,8 +1,8 @@
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
-from .entity.subscription import SubscriptionEntity
 from models._to_model import _to_model
 
+from .entity.subscription import SubscriptionEntity
 
 class Subscription:
     @staticmethod

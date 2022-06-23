@@ -1,11 +1,12 @@
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
+from models._to_model import _to_model
+
 from .entity.order_status import OrderStatusEntity
 from .entity.order import OrderEntity
 from .entity.driver import DriverEntity
 from .entity.sales_type import SalesTypeEntity
 from .entity.auto_accept import AutoAcceptEntity
-from models._to_model import _to_model
 
 class Order:
     @staticmethod
