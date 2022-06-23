@@ -2,20 +2,16 @@ from dataclasses import dataclass
 
 @dataclass
 class SubscriptionAttributes:
-    """
-    Attributes:"""
-    pass
+    id: int
+    application_id: int
+    business_id: int
+    callback_uri: str
+    event_id: int
 
 @dataclass
 class SubscriptionData:
-    """
-    Data:"""
-    pass
+    attributes: SubscriptionAttributes
 
 @dataclass
 class SubscriptionEntity:
-    """
-    Entity:"""
-    attributes: SubscriptionAttributes
     data: SubscriptionData
-    
