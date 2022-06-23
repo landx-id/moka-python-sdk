@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
+from .checkout import CheckoutEntity
+
 @dataclass
 class PaymentTax:
     id: int
@@ -182,4 +184,4 @@ class PaymentEntity:
     payment_gratuities: List[PaymentGratuity]
     payment_discounts: List[PaymentDiscount]
     payment_refunds: List[PaymentRefund]
-    checkouts: List[Checkout]
+    checkouts: List[CheckoutEntity]
