@@ -1,0 +1,185 @@
+from dataclasses import dataclass
+from typing import List
+
+@dataclass
+class PaymentTax:
+    id: int
+    name: str
+    amount: int
+    total: int
+    taxable_amount: int
+    payment_id: int
+    created_at: str
+    updated_at: str
+    tax_id: int
+    uuid: str
+    payment_uuid: str
+
+@dataclass
+class PaymentGratuity:
+    id: int
+    name: str
+    amount: int
+    total: int
+    payment_id: int
+    created_at: str
+    updated_at: str
+    gratuity_id: int
+    uuid: str
+    payment_uuid: str
+
+@dataclass
+class PaymentDiscount:
+    id: int
+    payment_id: int
+    discount_id: int
+    discount_amount: int
+    discount_name: str
+    discount_type: str
+    is_deleted: bool
+    created_at: str
+    updated_at: str
+    discount_cash: int
+    uuid: str
+    payment_uuid: str
+
+@dataclass
+class PaymentRefund:
+    id: int
+    status: str
+    payment_no: str
+    payment_type: str
+    amount_pay: int
+    amount_change: int
+    total_discount_amount: int
+    total_gratuity_amount: int
+    total_item_price_amount: int
+    total_tax_amount: int
+    total_checkouts_amount: int
+    is_refunded: bool
+    refunded_reason: str
+    refunded_date: str
+    business_id: int
+    customer_id: int
+    discount_id: int
+    is_deleted: bool
+    created_at: str
+    updated_at: str
+    total_custom_price_amount: int
+    include_gratuity_tax: bool
+    parent_payment_id: int
+    refund_amount: int
+    refund_type: str
+    card_no: str
+    created_by: int
+    note: str
+    total_collected_amount: int
+    server_id: int
+    server_name: str
+    server_title: str
+    auth_code: str
+    cc_name: str
+    card_type: str
+    transaction_number: str
+    transaction_reference: str
+    outlet_id: int
+    guid: str
+    synchronized_at: str
+    uniq_id: str
+    transaction_certificate: str
+    transaction_status_info: str
+    merchant_id: int
+    mpos_device_id: int
+    pg_mid: str
+    pg_setting: str
+    order_info: str
+    tvr: str
+    cvm_result: str
+    aid: str
+    transaction_date: str
+    pii: str
+    collected_by: int
+    shift_id: int
+    invoice_no: str
+    invoice_deposit_amount: int
+    invoice_due_date: str
+    invoice_status: str
+    latitude: str
+    longitude: str
+    refund_ids: str
+    total_gross_sales: int
+    total_net_sales: int
+    is_refund_breakdown: bool
+    customer_name: str
+    customer_email: str
+    customer_phone: str
+    subtotal: str
+    creator_name: str
+    table_name: str
+    collector_id: int
+    cashlezz_transaction_id: str
+    sms_id: str
+    receipt_count: str
+    order_id: str
+    is_loyalty: str
+    total_redeem_amount: str
+    is_offline: str
+    is_sales_type: bool
+    uuid: str
+    parent_payment_uuid: str
+
+
+@dataclass
+class PaymentEntity:
+    id: str
+    payment_no: str
+    created_at: str
+    updated_at: str
+    parent_payment_created_at: str
+    total_collected: int
+    total_item_price_amount: int
+    name: str
+    parent_payment_id: str
+    payment_type: str
+    payment_type_label: str
+    customer_id: str
+    payment_note: str
+    discounts: int
+    subtotal: int
+    gratuities: int
+    taxes: int
+    tendered: int
+    change: int
+    include_gratuity_tax: bool
+    enable_tax: bool
+    enable_gratuity: bool
+    card_type: str
+    card_no: str
+    transaction_date: str
+    transaction_time: str
+    collected_by: str
+    served_by: str
+    synchronized_at: str
+    outlet_id: int
+    pg_mid: str
+    mpos_device_id: str
+    transaction_certificate: str
+    transaction_status_info: str
+    mpos_transaction_date: str
+    merchant_id: str
+    transaction_reference: str
+    transaction_number: str
+    order_info: str
+    cc_name: str
+    pii: str
+    guid: str
+    uniq_id: str
+    invoice_due_date: str
+    invoice_no: str
+    invoice_deposit_amount: str
+    invoice_payment_records: List[object]
+    payment_taxes: List[PaymentTax]
+    payment_gratuities: List[PaymentGratuity]
+    payment_discounts: List[PaymentDiscount]
+    payment_refunds: List[PaymentRefund]
+    checkouts: List[Checkout]
