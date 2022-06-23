@@ -17,7 +17,7 @@ class Subscription:
         url = f"/v1/subscriptions"
         response = _APIRequestor.get(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=SubscriptionEntity, data=response.body)
+            return _to_model(model=SubscriptionEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 
@@ -36,7 +36,7 @@ class Subscription:
         url = f"/v1/subscriptions"
         response = _APIRequestor.post(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=SubscriptionEntity, data=response.body)
+            return _to_model(model=SubscriptionEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 
@@ -54,7 +54,7 @@ class Subscription:
         url = f"/v1/subscriptions"
         response = _APIRequestor.patch(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=SubscriptionEntity, data=response.body)
+            return _to_model(model=SubscriptionEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 

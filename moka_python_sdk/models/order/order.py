@@ -24,7 +24,7 @@ class Order:
         url = f"/v1/outlets/{outlet_id}/advanced_orderings/orders/{application_id}/status"
         response = _APIRequestor.get(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=OrderEntity, data=response.body)
+            return _to_model(model=OrderEntity, data=response.body['data'])
         else:
             raise MokaError(response)
     
@@ -82,7 +82,7 @@ class Order:
         url = f"/v1/outlets/{kwargs['outlet_id']}/advanced_orderings/orders"
         response = _APIRequestor.post(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=OrderEntity, data=response.body)
+            return _to_model(model=OrderEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 
@@ -102,7 +102,7 @@ class Order:
         url = f"/v1/outlets/{outlet_id}/advanced_orderings/orders/{application_order_id}/cancel"
         response = _APIRequestor.post(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=OrderEntity, data=response.body)
+            return _to_model(model=OrderEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 
@@ -120,7 +120,7 @@ class Order:
         url = f"/v2/outlets/{outlet_id}/advanced_orderings/generate_sales_type"
         response = _APIRequestor.post(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=SalesTypeEntity, data=response.body)
+            return _to_model(model=SalesTypeEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 
@@ -138,7 +138,7 @@ class Order:
         url = f"/v1/outlets/{outlet_id}/advanced_orderings/auto_accept"
         response = _APIRequestor.get(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=AutoAcceptEntity, data=response.body)
+            return _to_model(model=AutoAcceptEntity, data=response.body['data'])
         else:
             raise MokaError(response)
     
@@ -157,7 +157,7 @@ class Order:
         url = f"/v1/outlets/{outlet_id}/advanced_orderings/auto_accept"
         response = _APIRequestor.post(url, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=AutoAcceptEntity, data=response.body)
+            return _to_model(model=AutoAcceptEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 
@@ -192,7 +192,7 @@ class Order:
         }
         response = _APIRequestor.post(url, body=data, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=DriverEntity, data=response.body)
+            return _to_model(model=DriverEntity, data=response.body['data'])
         else:
             raise MokaError(response)
 

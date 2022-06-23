@@ -42,7 +42,7 @@ class Invoice:
         }
         response = _APIRequestor.get(url, body=body)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=InvoiceEntity, data=response.body)
+            return _to_model(model=InvoiceEntity, data=response.body['data'])
         else:
             raise MokaError(response)
     
@@ -68,7 +68,7 @@ class Invoice:
         }
         response = _APIRequestor.get(url, body=body)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=InvoiceData, data=response.body)
+            return _to_model(model=InvoiceData, data=response.body['data'])
         else:
             raise MokaError(response)
         
