@@ -53,7 +53,7 @@ class _APIRequestor:
             resp = http_client.request(method, url, headers=headers, params=params)
         else:
             resp = http_client.request(method, url, headers=headers, json=body)
-        return XfersResponse(resp.status_code, resp.headers, resp.json())
+        return MokaResponse(resp.status_code, resp.headers, resp.json())
 
     @staticmethod
     def _add_default_headers(api_key, secret_key, headers):
