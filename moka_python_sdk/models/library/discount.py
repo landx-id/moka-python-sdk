@@ -24,8 +24,8 @@ class Discount:
             - outlet_id (int): ID of the outlet that will be searched.
             - page (int): Page number.
             - per_page (int): Number of records per page.
-            - since (float): Start date in DD/MM/YYYY format
-            - until (float): End date in DD/MM/YYYY format
+            - since (float): The initial range of time in Epoch format
+            - until (float): The final range of time in Epoch format
             - include_deleted (bool): Include deleted categories in the result.
             
         Returns:

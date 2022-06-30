@@ -1,12 +1,13 @@
 from dataclasses import dataclass
 from typing import List
+
 from library import LibraryEntity, LibraryDetail
 
 @dataclass
-class GratuitiesDetail(LibraryDetail):
-    business_id: int
+class TaxDetail(LibraryDetail):
     amount: int
-    
+    business_id: int
+
 @dataclass
-class GratuitiesEntity(LibraryEntity):
-    gratuities: List[GratuitiesDetail]
+class TaxEntity(LibraryEntity):
+    tax: List[TaxDetail]
