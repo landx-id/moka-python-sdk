@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
+from transaction.entity.item import ItemEntity
+
 @dataclass
 class DiscountEntity:
     discount_id: int
@@ -38,11 +40,9 @@ class ModifierEntity:
 
 
 @dataclass
-class CheckoutEntity:
+class CheckoutEntity(ItemEntity):
     id: int
     custom_amount: int
-    item_variant_id: int
-    quantity: int
     discount_amount: int
     tax_amount: int
     business_id: int
@@ -50,21 +50,14 @@ class CheckoutEntity:
     is_deleted: bool
     created_at: str
     updated_at: str
-    item_id: int
     item_discount: int
-    item_price_library: int
     item_price: int
     item_price_discount: int
     gratuity_amount: int
     item_price_discount_gratuity: int
     total_price: int
     item_price_quantity: int
-    category_name: str
-    category_id: int
-    item_name: str
-    item_variant_name: str
     sku: str
-    note: str
     cogs: str
     gross_sales: int
     outlet_id: int
