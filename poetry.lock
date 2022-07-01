@@ -1,0 +1,48 @@
+[[package]]
+name = "dacite"
+version = "1.6.0"
+description = "Simple creation of data classes from dictionaries."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+dataclasses = {version = "*", markers = "python_version < \"3.7\""}
+
+[package.extras]
+dev = ["pytest (>=5)", "pytest-cov", "coveralls", "black", "mypy", "pylint"]
+
+[[package]]
+name = "dataclasses"
+version = "0.8"
+description = "A backport of the dataclasses module for Python 3.6"
+category = "main"
+optional = false
+python-versions = ">=3.6, <3.7"
+
+[[package]]
+name = "pyhumps"
+version = "3.7.2"
+description = "🐫  Convert strings (and dictionary keys) between snake case, camel case and pascal case in Python. Inspired by Humps for Node"
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.6"
+content-hash = "566a3d5c36003cd9844c3a883163ace9db991a565f6b3612dcac1ba8daa41cdd"
+
+[metadata.files]
+dacite = [
+    {file = "dacite-1.6.0-py3-none-any.whl", hash = "sha256:4331535f7aabb505c732fa4c3c094313fc0a1d5ea19907bf4726a7819a68b93f"},
+    {file = "dacite-1.6.0.tar.gz", hash = "sha256:d48125ed0a0352d3de9f493bf980038088f45f3f9d7498f090b50a847daaa6df"},
+]
+dataclasses = [
+    {file = "dataclasses-0.8-py3-none-any.whl", hash = "sha256:0201d89fa866f68c8ebd9d08ee6ff50c0b255f8ec63a71c16fda7af82bb887bf"},
+    {file = "dataclasses-0.8.tar.gz", hash = "sha256:8479067f342acf957dc82ec415d355ab5edb7e7646b90dc6e2fd1d96ad084c97"},
+]
+pyhumps = [
+    {file = "pyhumps-3.7.2-py3-none-any.whl", hash = "sha256:f554bc742138c01ef85176534a411b105c3e7b20133b3c68bd4e613dcb425241"},
+    {file = "pyhumps-3.7.2.tar.gz", hash = "sha256:cadfffd84e8cf93cf5566ed351bbd0d5356e04ffc03de7d2aa262660c144b775"},
+]
