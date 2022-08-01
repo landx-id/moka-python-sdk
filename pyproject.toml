@@ -5,9 +5,10 @@ description = ""
 authors = ["LandX Engineering <tech@landx.id>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
 dacite = "^1.6.0"
 pyhumps = "^3.7.2"
+requests = "^2.28.1"
 
 [tool.poetry.dev-dependencies]
 
