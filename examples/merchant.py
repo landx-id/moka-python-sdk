@@ -6,6 +6,11 @@ SECRET_KEY = "d269d087-25a6-49fa-b17c-22cd1b23c515"
 x = Moka(api_key=API_KEY, secret_key=SECRET_KEY, production=False)
 
 merchant = x.Merchant
+
+print("Business Info:")
+print(merchant.show_business_info())
+
+print("Customer List:")
 print(merchant.get_list_customer(
     business_id=1,
     mobile_device=1,
@@ -14,3 +19,18 @@ print(merchant.get_list_customer(
     include_deleted=True,
     include_loyalty=True,
 ))
+
+print("Business Checkout Setting:")
+print(merchant.get_business_checkout_setting(
+    business_id=1,
+))
+
+print("List Outlets:")
+print(merchant.get_list_outlets(
+    business_id=1,
+))
+
+
+
+
+
