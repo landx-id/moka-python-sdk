@@ -60,12 +60,12 @@ class CustomerDetail:
     email: str
     name: str
     phone: str
-    address: str
-    city: str
-    state: str
-    postal_code: str
+    address: str | None
+    city: str | None
+    state: str | None
+    postal_code: str | None
     business_id: int
-    birthday: str
+    birthday: str | None
     is_deleted: bool
     created_at: str
     updated_at: str
@@ -74,7 +74,7 @@ class CustomerDetail:
 
 @dataclass
 class CustomerEntity:
-    customer: CustomerDetail
+    customers: List[CustomerDetail]
 
 @dataclass
 class EarningRule:

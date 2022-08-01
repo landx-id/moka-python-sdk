@@ -16,9 +16,4 @@ class Moka:
         injected_params = (api_key, secret_key, production, http_client)
         param_injector = _MokaParamInjector(injected_params)
 
-        self.PaymentMethod = param_injector.instantiate_payment_methods()
-        self.Payment = param_injector.instantiate_payment()
-        self.Balance = param_injector.instantiate_balance()
-        self.Bank = param_injector.instantiate_bank()
-        self.PaymentLink = param_injector.instantiate_payment_link()
-        self.Disbursements = param_injector.instantiate_disbursements()
+        self.Merchant = param_injector.instantiate_merchant()
