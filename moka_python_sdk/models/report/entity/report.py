@@ -57,7 +57,7 @@ class ModifierDetail:
 
 @dataclass
 class ModifierSalesEntity:
-    modifier: List[dict]
+    modifiers: List[dict]
     total_quantity: int
     total_gross_sales: float
     total_discounts: float
@@ -77,7 +77,7 @@ class DiscountDetail:
 
 @dataclass
 class DiscountSalesEntity:
-    discount: List[DiscountDetail]
+    discounts: List[DiscountDetail]
     total_count: int
     total_discounts_applied: float
     total_refunds: float
@@ -91,7 +91,7 @@ class ReportTax:
 
 @dataclass
 class TaxSalesEntity:
-    report_taxes: List[ReportTax]
+    reports_taxes: List[ReportTax]
     total_tax_collected: float
 
 @dataclass
@@ -115,7 +115,7 @@ class ServerDetail:
 
 @dataclass
 class ServerSalesEntity:
-    server: List[ServerDetail]
+    servers: List[ServerDetail]
     total_collected: float
     total_number_of_transactions: int
 
@@ -173,4 +173,4 @@ class ReportDetail:
 class PaymentMethodsEntity:
     total_number_of_transactions: int
     total_collected: float
-    reports: List[ReportDetail]
+    reports: ReportDetail

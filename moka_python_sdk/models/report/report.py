@@ -1,6 +1,6 @@
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
-from models._to_model import _to_model
+from moka_python_sdk.models._to_model import _to_model
 from typing import List
 
 from .entity.report import (
@@ -16,8 +16,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> CategorySalesEntity:
         """Send GET Request to Show category sales for selected date range on the selected outlet.
@@ -50,8 +50,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> CollectorSalesEntity:
         """Send GET Request to Show collector sales for selected date range on the selected outlet.
@@ -84,8 +84,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> ModifierSalesEntity:
         """Send GET Request to Show modifier sales for selected date range on the selected outlet.
@@ -118,8 +118,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> DiscountSalesEntity:
         """Send GET Request to Show discount sales for selected date range on the selected outlet.
@@ -152,8 +152,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> TaxSalesEntity:
         """Send GET Request to Show tax sales for selected date range on the selected outlet.
@@ -186,8 +186,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> GratuitySalesEntity:
         """Send GET Request to Show gratuity sales for selected date range on the selected outlet.
@@ -220,8 +220,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> ServerSalesEntity:
         """Send GET Request to Show server sales for selected date range on the selected outlet.
@@ -254,8 +254,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> ItemSalesEntity:
         """Send GET Request to Get Show item sales for selected date range on the selected outlet.
@@ -288,8 +288,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> SalesSummaryEntity:
         """Send GET Request to Show sales summary for selected date range on the selected outlet.
@@ -322,8 +322,8 @@ class Report:
         *,
         outlet_id: int,
         per_page: int,
-        start: float,
-        end: float,
+        start: float = None,
+        end: float = None,
         **kwargs
     ) -> PaymentMethodsEntity:
         """Send GET Request to Show payment methods for selected date range on the selected outlet.

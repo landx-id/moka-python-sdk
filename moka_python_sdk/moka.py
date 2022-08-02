@@ -17,3 +17,4 @@ class Moka:
         param_injector = _MokaParamInjector(injected_params)
 
         self.Merchant = param_injector.instantiate_merchant()
+        self.Report = param_injector.instantiate_report()

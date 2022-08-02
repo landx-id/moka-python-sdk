@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from typing import List
+import dataclasses
+from typing import List, Optional
 
 @dataclass
 class BusinessDetail:
@@ -13,28 +14,28 @@ class BusinessDetail:
     description: str
     email: str
     phone: str
-    logo: str
-    notify_per_deposit: str
-    notify_per_trans: str
+    logo: str | None
+    notify_per_deposit: str | None
+    notify_per_trans: str | None
     user_id: int
     is_deleted: bool
     created_at: str
     updated_at: str
-    business_type_id: int
+    business_type_id: int | None
     business_category_id: int
     website: str
     twitter: str
     facebook: str
     instagram: str
-    notes: str
-    latitude: float
-    longitude: float
+    notes: str | None
+    latitude: float | None
+    longitude: float | None
     synchronized_at: str
     outlet_slot: int
     is_trial: bool
     current_plan: int
     expired_at: str
-    last_payment_date: str
+    last_payment_date: str | None
     trial_end_at: str
 
 
@@ -142,15 +143,15 @@ class OutletDetail:
     city: str
     province: str
     postal_code: str
-    latitude: float
-    longitude: float
+    latitude: float | None
+    longitude: float | None
     is_deleted: bool
     created_at: str
     updated_at: str
     synchronized_at: str
     importing: bool
     exporting: bool
-    notes: str
+    notes: str | None
     start_date: str
     end_date: str
     is_paying: bool
@@ -159,7 +160,7 @@ class OutletDetail:
 @dataclass
 class OutletEntity:
     outlets: List[OutletDetail]
-    total_count: int
+    total_count: Optional[int]
 
 @dataclass
 class UserInfo:

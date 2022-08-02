@@ -1,7 +1,8 @@
 from inspect import signature
 
 from .models.merchant.merchant import Merchant
-
+# from .models.library import Library
+from .models.report.report import Report
 
 class _MokaParamInjector:
     """Builder class to inject parameters (api_key, base_url, http_client) to feature class"""
@@ -11,6 +12,12 @@ class _MokaParamInjector:
 
     def instantiate_merchant(self) -> Merchant:
         return self.instantiate(Merchant)
+    
+    # def instantiate_library(self) -> Library:
+    #     return self.instantiate(Library)
+
+    def instantiate_report(self) -> Report:
+        return self.instantiate(Report)
 
     def instantiate(self, injected_class):
         """Inject every static method in `injected_class` with provided parameters.

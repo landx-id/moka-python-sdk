@@ -64,8 +64,8 @@ class InvoiceData:
     invoice_deposit_amount: int
     invoice_due_date: str
     invoice_status: str
-    latitude: float
-    longitude: float
+    latitude: float | None
+    longitude: float | None
     refund_ids: list
     total_gross_sales: int
     total_net_sales: int
