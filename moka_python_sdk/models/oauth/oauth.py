@@ -1,7 +1,7 @@
 from dataclasses import asdict
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
-from models._to_model import _to_model
+from moka_python_sdk.models._to_model import _to_model
 from typing import List
 
 from .entity.oauth import OAuthEntity
@@ -15,7 +15,7 @@ class OAuth:
         client_secret: str,
         code: str,
         redirect_uri: str,
-        refresh_token: str = None,
+        refresh_token: str,
         **kwargs
     ) -> OAuthEntity:
         """Send POST Request to Exchange token.
@@ -43,7 +43,7 @@ class OAuth:
         }
         response = _APIRequestor.post(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=OAuthEntity, data=response.body['data'])
+            return _to_model(model=OAuthEntity, data=response.body)
         else:
             raise MokaError(response)
     
@@ -52,7 +52,8 @@ class OAuth:
         *,
         client_id: str,
         client_secret: str,
-        refresh_token: str,
+        code: str,
+        redirect_uri: str,
         **kwargs
     ) -> OAuthEntity:
         """Send POST Request to Get access token.
@@ -70,9 +71,9 @@ class OAuth:
             grant_type="authorization_code",
             client_id=client_id,
             client_secret=client_secret,
-            code=None,
-            redirect_uri=None,
-            refresh_token=refresh_token,
+            code=code,
+            redirect_uri=redirect_uri,
+            refresh_token=None,
             **kwargs
         )
     
@@ -100,6 +101,8 @@ class OAuth:
             client_id=client_id, 
             client_secret=client_secret, 
             refresh_token=refresh_token, 
+            code=None,
+            redirect_uri=None,
             **kwargs
         )
     
@@ -110,7 +113,7 @@ class OAuth:
         client_secret: str,
         token: str,
         **kwargs
-    ) -> None:
+    ) -> bool:
         """Send POST Request to Revoke token.
         (API Reference : https://api.mokapos.com/docs#operation/revokeToken)
 
@@ -130,6 +133,6 @@ class OAuth:
         }
         response = _APIRequestor.post(url, body=body, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return None
+            return True
         else:
             raise MokaError(response)
