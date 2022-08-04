@@ -1,9 +1,9 @@
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
-from models._to_model import _to_model
+from moka_python_sdk.models._to_model import _to_model
 from typing import List
 
-from entity.category import CategoryEntity
+from .entity.category import CategoryEntity
 
 class Category:
     @staticmethod
@@ -12,8 +12,8 @@ class Category:
         outlet_id: int,
         page: int,
         per_page: int,
-        since: float,
-        until: float,
+        since: float = None,
+        until: float = None,
         include_deleted: bool,
         **kwargs
     ) -> dict:

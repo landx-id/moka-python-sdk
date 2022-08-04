@@ -12,8 +12,8 @@ class Item:
         outlet_id: int,
         page: int,
         per_page: int,
-        since: float,
-        until: float,
+        since: float = None,
+        until: float = None,
         include_deleted: bool,
         **kwargs
     ) -> dict:

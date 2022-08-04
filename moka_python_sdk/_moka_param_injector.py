@@ -1,8 +1,10 @@
-from inspect import signature
+from inspect import isclass, signature
 
 from .models.merchant.merchant import Merchant
 from .models.report.report import Report
 from .models.oauth.oauth import OAuth
+from .models.library import Library
+import inspect
 
 class _MokaParamInjector:
     """Builder class to inject parameters (api_key, base_url, http_client) to feature class"""
@@ -12,6 +14,9 @@ class _MokaParamInjector:
 
     def instantiate_merchant(self) -> Merchant:
         return self.instantiate(Merchant)
+
+    def instantiate_library(self) -> Library:
+        return self.instantiate(Library)
 
     def instantiate_oauth(self) -> OAuth:
         return self.instantiate(OAuth)
@@ -40,6 +45,9 @@ class _MokaParamInjector:
                 _MokaParamInjector._inject_function(
                     injected_class, params, keys, value
                 )
+            if inspect.isclass(value) and not keys.startswith("_"):
+                value = self.instantiate(value)
+        
         return injected_class
 
     @staticmethod
