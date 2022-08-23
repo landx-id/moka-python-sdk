@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from transaction.entity.item import ItemEntity
+from .item import ItemEntity
 
 @dataclass
 class DiscountEntity:
@@ -11,7 +11,7 @@ class DiscountEntity:
     discount_percentage: int
     discount_cash: int
     discount_amount: float
-    discount_guid: str
+    discount_guid: str | None
     created_at: str
     updated_at: str
 
@@ -26,12 +26,12 @@ class ModifierEntity:
     price: int
     created_at: str
     updated_at: str
-    cogs: int
+    cogs: int | None
     outlet_id: int
     payment_id: int
-    discount_amount: int
+    discount_amount: float
     gross_sales: int
-    net_sales: int
+    net_sales: float
     redeem_amount: int
     uuid: str
     checkout_uuid: str
@@ -43,7 +43,7 @@ class ModifierEntity:
 class CheckoutEntity(ItemEntity):
     id: int
     custom_amount: int
-    discount_amount: int
+    discount_amount: float
     tax_amount: int
     business_id: int
     payment_id: int
@@ -52,28 +52,28 @@ class CheckoutEntity(ItemEntity):
     updated_at: str
     item_discount: int
     item_price: int
-    item_price_discount: int
-    gratuity_amount: int
-    item_price_discount_gratuity: int
-    total_price: int
+    item_price_discount: float
+    gratuity_amount: float
+    item_price_discount_gratuity: float
+    total_price: float
     item_price_quantity: int
     sku: str
-    cogs: str
+    cogs: str | None
     gross_sales: int
     outlet_id: int
     position: int
-    net_sales: int
+    net_sales: float
     track_stock: bool
     item_image: str
-    parent_checkout_id: int
+    parent_checkout_id: int | None
     is_recipe: bool
-    redeem_amount: int
+    redeem_amount: float
     sales_type_id: int
     sales_type_name: str
     is_program_item: bool
     uuid: str
     payment_uuid: str
-    parent_checkout_uuid: str
+    parent_checkout_uuid: str | None
     price: int
     refunded_quantity: int
     modifiers: List[ModifierEntity]

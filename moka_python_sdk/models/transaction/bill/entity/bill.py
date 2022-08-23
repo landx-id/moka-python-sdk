@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
 @dataclass
 class ItemVariant:
@@ -23,7 +23,7 @@ class BillItem:
 class BillDetail:
     id: int
     bill_name: str
-    server_name: str
+    server_name: str | None
     updated_at: str
     bill_sub_total_amount: float
     bill_total_amount: float
@@ -31,34 +31,38 @@ class BillDetail:
 
 @dataclass
 class Table:
-    tableId: int
-    tableGroupId: int
-    tableName: str
-    tableGroupName: str
+    tableId: Optional[int]
+    tableGroupId: Optional[int]
+    tableName: Optional[str]
+    tableGroupName: Optional[str]
 
 @dataclass
 class BillEntity:
     id: int
-    guid: str
+    guid: str | None
     name: str
-    createdAt: str
-    updatedAt: str
-    synchronizedAt: str
+
+    createdAt: Optional[str]
+    updatedAt: Optional[str]
+    synchronizedAt: Optional[str]
+
     status: str
-    outletId: int
-    tableId: int
-    cancelledBy: str
-    cancelledAt: str
-    cancelledReason: str
-    serveBy: int
+
+    outletId: Optional[int]
+    tableId: Optional[int]
+    cancelledBy: Optional[str]
+    cancelledAt: Optional[str]
+    cancelledReason: Optional[str]
+    serveBy: Optional[int]
+
     pax: int
-    receiptNo: str
-    billDetail: BillDetail
-    createdByDevice: str
-    updatedByDevice: str
-    cancelledByName: str
-    tableGroupId: int
-    tableName: str
-    tableGroupName: str
-    serveByName: str
-    tables: List[Table]
+    createdByDevice: Optional[str]
+    updatedByDevice: Optional[str]
+    cancelledByName: Optional[str]
+    serveByName: Optional[str]
+    tables: Optional[List[Table]]
+
+
+@dataclass
+class BillData:
+    data: List[BillEntity]

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from typing import List
-from transaction.entity.item import ItemEntity
+from ....transaction.entity.item import ItemEntity
 
 @dataclass
 class ItemModifier:
@@ -14,7 +14,7 @@ class ItemModifier:
 class OrderItemEntity(ItemEntity):
     item_discount_id: int
     item_discount_type: str
-    item_discount_amount: int
+    item_discount_amount: float
     item_discount_guid: str
     item_discount_name: str
     item_modifiers: List[ItemModifier]

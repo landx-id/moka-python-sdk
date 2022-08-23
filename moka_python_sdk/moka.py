@@ -20,3 +20,4 @@ class Moka:
         self.Library = param_injector.instantiate_library()
         self.Oauth = param_injector.instantiate_oauth()
         self.Report = param_injector.instantiate_report()
+        self.Transaction = param_injector.instantiate_transaction()

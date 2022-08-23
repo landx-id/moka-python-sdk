@@ -11,7 +11,7 @@ class BusinessDetail:
     city: str
     province: str
     postal_code: str
-    description: str
+    description: str | None
     email: str
     phone: str
     logo: str | None
@@ -98,7 +98,7 @@ class Reward:
     reward_type: str
     discount: int
     discount_type: str
-    max_discount_amount: int
+    max_discount_amount: float
     min_purchase_amount: int
     created_at: str
     created_by: str
