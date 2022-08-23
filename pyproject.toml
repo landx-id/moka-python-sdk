@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "moka-python-sdk"
 version = "0.1.0"
-description = ""
+description = "Python SDK for MOKA API"
 authors = ["LandX Engineering <tech@landx.id>"]
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/landx-id/moka-python-sdk"
+keywords = ["moka", "api", "LandX"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
