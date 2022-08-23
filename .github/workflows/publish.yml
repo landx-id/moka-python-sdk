@@ -1,0 +1,29 @@
+
+
+name: "Publish package"
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish-to-pypi:
+    name: Publish package
+    runs-on: ubuntu-20.04
+    environment: Production
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: "Build and publish"
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+          source ~/.poetry/env
+          poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+          poetry version ${GITHUB_REF##*/}
+          poetry build
+          poetry publish
