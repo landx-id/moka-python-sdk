@@ -1,9 +1,11 @@
 from inspect import isclass, signature
 
+
 from .models.merchant.merchant import Merchant
 from .models.report.report import Report
 from .models.oauth.oauth import OAuth
 from .models.library import Library
+from .models.transaction import Transaction
 import inspect
 
 class _MokaParamInjector:
@@ -23,6 +25,9 @@ class _MokaParamInjector:
 
     def instantiate_report(self) -> Report:
         return self.instantiate(Report)
+    
+    def instantiate_transaction(self) -> Transaction:
+        return self.instantiate(Transaction)
 
     def instantiate(self, injected_class):
         """Inject every static method in `injected_class` with provided parameters.
@@ -46,7 +51,7 @@ class _MokaParamInjector:
                     injected_class, params, keys, value
                 )
             if inspect.isclass(value) and not keys.startswith("_"):
-                value = self.instantiate(value)
+                setattr(injected_class, keys, self.instantiate(value))
         
         return injected_class
 

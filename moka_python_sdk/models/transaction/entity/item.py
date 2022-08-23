@@ -7,7 +7,7 @@ class ItemEntity:
     quantity: int
     item_variant_id: int
     item_variant_name: str
-    note: str
+    note: str | None
     item_price_library: int
     category_id: int
     category_name: str

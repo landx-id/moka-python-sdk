@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from library import LibraryEntity, LibraryDetail
+from .library import LibraryEntity, LibraryDetail
 
 @dataclass
 class TaxDetail(LibraryDetail):

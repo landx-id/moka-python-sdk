@@ -1,9 +1,9 @@
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
-from models._to_model import _to_model
+from moka_python_sdk.models._to_model import _to_model
 from typing import List
 
-from .entity.bill import BillEntity
+from .entity.bill import BillEntity, BillData
 
 class Bill:
     @staticmethod
@@ -12,13 +12,13 @@ class Bill:
         outlet_id: int,
         page: int,
         per_page: int,
-        sort: str,
-        start: str,
-        end: str,
-        last_pull: str,
-        statuses: str,
-        dine_in_only: bool,
-        deep: bool,
+        sort: str = None,
+        start: str = None,
+        end: str = None,
+        last_pull: str = None,
+        statuses: str = None,
+        dine_in_only: bool = True,
+        deep: bool = True,
         **kwargs
     ) -> dict:
         """Send GET Request to Get a bill.
@@ -53,7 +53,7 @@ class Bill:
         }
         response = _APIRequestor.get(url, params=params, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=List[BillEntity], data=response.body['data'])
+            return _to_model(model=BillData, data=response.body)
         else:
             raise MokaError(response)
 

@@ -107,9 +107,9 @@ class GratuitySalesEntity:
 
 @dataclass
 class ServerDetail:
-    server_id: int
-    server_name: str
-    server_title: str
+    server_id: int | None
+    server_name: str | None
+    server_title: str | None
     number_transaction: int
     collected: int
 

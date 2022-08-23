@@ -1,6 +1,6 @@
 from moka_python_sdk._api_requestor import _APIRequestor
 from moka_python_sdk.moka_error import MokaError
-from models._to_model import _to_model
+from moka_python_sdk.models._to_model import _to_model
 
 from .entity.invoice import InvoiceEntity, InvoiceData
 

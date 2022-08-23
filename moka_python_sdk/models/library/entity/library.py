@@ -9,8 +9,8 @@ class LibraryDetail:
     created_at: str
     updated_at: str
     outlet_id: int
-    guid: str
-    uniq_id: str
+    guid: str | None
+    uniq_id: str | None
     synchronized_at: str
 
 @dataclass

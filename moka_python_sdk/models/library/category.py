@@ -42,6 +42,6 @@ class Category:
         }
         response = _APIRequestor.get(url, params=params, **kwargs)
         if response.status_code >= 200 and response.status_code < 300:
-            return _to_model(model=List[CategoryEntity], data=response.body['data'])
+            return _to_model(model=CategoryEntity, data=response.body['data'])
         else:
             raise MokaError(response)

@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import List
 
-from library import LibraryEntity, LibraryDetail
-from category import CategoryDetail
+from .library import LibraryEntity, LibraryDetail
+from .category import CategoryDetail
 
 @dataclass
 class ImageDetail:
@@ -24,12 +24,12 @@ class ItemVariant:
     add_inventory: int
     track_stock: bool
     alert: bool
-    cogs: int
+    cogs: int | None
     synchronized_at: str
     last_modified: str
     outlet_id: int
-    guid: str
-    uniq_id: str
+    guid: str | None
+    uniq_id: str | None
     track_cogs: bool
     is_saved: bool
     sales_type_items: List[dict]
@@ -41,7 +41,7 @@ class ActiveModifier(LibraryDetail):
 
 @dataclass
 class ItemDetail(LibraryDetail):
-    description: str
+    description: str | None
     image: ImageDetail
     business_id: int
     category_id: int

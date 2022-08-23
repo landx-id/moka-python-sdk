@@ -26,7 +26,7 @@ class PromoDetail:
     promo_id: int
     promo_name: str
     promo_type: str
-    promo_description: str
+    promo_description: str | None
     promo_start_date: str
     promo_end_date: str
     promo_status: str
