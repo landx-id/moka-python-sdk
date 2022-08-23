@@ -4,20 +4,24 @@ This library is the abstraction of Moka API for access from applications written
 
 ## Table of Contents
 
-- [API Documentation](#api-documentation)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-  - [API Key](#api-key)
-  - [Merchant](#Merchant)
-  - [Transaction](#Transaction)
-   - [Get latest transaction](#get-latest-transaction)
-   - [Get all open bills](#get-all-open-bills)
-  - [Report](#report)
-   - [Category Sales](#category-sales)
-   - [Modifier Sales](#modifier-sales)
-   - [Discount Sales](#discount-sales)
-   - [Tax Sales](#tax-sales)
+- [Moka Python Library](#moka-python-library)
+  - [Table of Contents](#table-of-contents)
+  - [API Documentation](#api-documentation)
+  - [Requirements](#requirements)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [API Key](#api-key)
+    - [Merchant](#merchant)
+      - [Show Business Info](#show-business-info)
+    - [Transaction](#transaction)
+      - [Get latest transaction](#get-latest-transaction)
+      - [Get all open bills](#get-all-open-bills)
+    - [Report](#report)
+      - [Category Sales](#category-sales)
+      - [Modifier Sales](#modifier-sales)
+      - [Discount Sales](#discount-sales)
+      - [Tax Sales](#tax-sales)
+  - [License](#license)
 
 
 ## API Documentation
@@ -161,3 +165,7 @@ report.show_tax_sales(
 )
 ```
 Reference: https://api.mokapos.com/docs#tag/Tax-Sales
+
+## License
+
+MIT License
